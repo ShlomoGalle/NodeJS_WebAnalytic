@@ -3,17 +3,15 @@ const fs = require('fs');
 const url = require("url");
 const EventEmitter = require("events");
 
-let myEcouter = new EventEmitter();
+// let myEcouter = new EventEmitter();
 
-myEcouter.on("test", function (a, b) { 
-    console.log("Test ", a, b);
-});
+// myEcouter.on("test", function (a, b) { 
+//     console.log("Test ", a, b);
+// });
 
-myEcouter.emit("test", "a", "b");
-myEcouter.emit("test");
-myEcouter.emit("test", "c", "d");
-
-
+// myEcouter.emit("test", "a", "b");
+// myEcouter.emit("test");
+// myEcouter.emit("test", "c", "d");
 
 let App = {
     start : function (port) {
@@ -36,11 +34,13 @@ let App = {
     }
 }
 
-let app = App.start(8000);
+// let app = App.start(8080);
 
-app.on("root", function (response) {
-    console.log("Je suis à la racine");
-})
+// app.on("root", function (response) {
+//     response.write("Je suis à la racine");
+// })
+
+module.exports = App;
 
 
 // // Create a local server to receive data from

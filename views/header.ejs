@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>
+        My test website
+    </title>
+
+    <link rel="stylesheet" href="assets/semantic/semantic.min.css">
+
+    <style>
+        .main.container{
+            margin-top: 7em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="ui fixed inverted menu">
+        <a href="/" class="header item">Home</a>
+    </div>
+
+<div class="ui main container"> 
+
+    <% if(locals.error) { %>
+    <div class="ui negative message">
+        <%= error %>
+    </div>
+    <% } else if(locals.success) { %>
+    <div class="ui positive message">
+        <%= success %>
+    </div>
+    <% } %>

@@ -1,0 +1,25 @@
+{
+  "name": "nodejs_webanalytic",
+  "version": "1.0.0",
+  "description": "Tool to analyze websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShlomoGalle/NodeJS_WebAnalytic.git"
+  },
+  "author": "Shlomo Galle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShlomoGalle/NodeJS_WebAnalytic/issues"
+  },
+  "homepage": "https://github.com/ShlomoGalle/NodeJS_WebAnalytic#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
