@@ -21,10 +21,8 @@ class scrapper {
             this.domain_name = data.domain_name;
 
             this.main_analyze('http://localhost:8000/', url, (data) => {
-                // console.log('yop')
-
-                console.log(this.url_status)
-                console.log(this.all_url)
+                // console.log(this.url_status)
+                // console.log(this.all_url)
                 // console.log(this.all_url_from_where)
                 
                 var status = "<br>";
@@ -55,13 +53,16 @@ class scrapper {
 
     main_analyze (url_display, url_destination, cb)
     {
-        if(this.all_url.length == this.number_url && this.number_url != -1){
-            return;
-        }
-
         this.check_url_analyzed(url_destination, (data) => {
             if(!data.check)
             {
+                if((this.all_url.length - 10) == this.number_url && this.number_url != -1){
+                    return;
+                }
+                console.log(this.all_url.length)
+                console.log(this.number_url)
+                console.log(url_destination)
+
                 this.all_url.push(url_destination);
                 this.all_url_from_where[url_destination] = url_display;
                                 
@@ -111,7 +112,6 @@ class scrapper {
                 });
             }
             // //console.log(url_destination + "ERROR 400" )
-
         }
     }
 
@@ -119,8 +119,6 @@ class scrapper {
     {
         const $ = cheerio.load(data_url_destination.data);
        
-        var all_link_temp = []
-
         //console.log('--------------------------------------------------Trouver des liens--------------------------------------------------')
         var a_element = $('a', data_url_destination.data)
 
@@ -137,26 +135,15 @@ class scrapper {
                                 cb('finish')
                                 // console.log(data)
                             })
-                            all_link_temp.push(element.attribs.href);
-                            //console.log(element.attribs.href)
                         }
                     });
                 }
             }
         }
-
-        // cb('--------------------------------------------------Finie--------------------------------------------------')
     }
 
     check_url_analyzed(url_destination, cb){
         var bool = false; 
-        // for (let index = 0; index < this.all_url.length; index++) {
-        //     const element = this.all_url[index];
-        //     if(element == url_destination)
-        //     {
-        //         bool = true;
-        //     }
-        // }
 
         (this.all_url.indexOf(url_destination)) != -1 ? bool = true : ''; 
 

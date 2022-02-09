@@ -22,13 +22,8 @@ app.post("/", (request, response) => {
         response.render("index", {error : "The url or number of url is missing !"})
     }
     else{
-        // scrapper.start(request, response);
-        var data2;
         var monInstance = new scrapper();
         monInstance.start_analyze(request.body.url, request.body.number_url, (data) => {
-            // console.log(data)
-            // data2 = data;
-            // response.Clear()
             if(request.body.number_url == -1)
             {
                 response.write(data)
@@ -38,7 +33,6 @@ app.post("/", (request, response) => {
             {
                 response.render("index", {success : "Thank you ! ", message : data})
             }
-            // response.write('------------------------------------------------------------------------------------------------------')
         });
     }
 });
