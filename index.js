@@ -1,5 +1,5 @@
 const express = require("express");
-const ejs = require('ejs');
+const scrapper = require("./models/scrapper")
 
 var app = express();
 
@@ -19,9 +19,17 @@ app.post("/", (request, response) => {
     console.log(request.body.url)
     if(request.body.url === undefined || request.body.url === '')
     {
-        response.render("index", {error : "The message is missing !"})
+        response.render("index", {error : "The url is missing !"})
     }
-    response.render("index", {success : "Thank you ! "})
+    else{
+        // scrapper.start(request, response);
+        
+        var monInstance = new scrapper();
+        monInstance.start_analyze(request.body.url, (data) => {
+            console.log(data)
+            response.render("index", {success : "Thank you ! ", message : data})
+        });
+    }
 });
 
 
