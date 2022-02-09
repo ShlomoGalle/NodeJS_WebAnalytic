@@ -27,7 +27,7 @@ class scrapper {
                 console.log(this.all_url)
                 // console.log(this.all_url_from_where)
                 
-                var status = "";
+                var status = "<br>";
                 var count = 0;
                 for (const property in this.url_status) {
                     // console.log(`${property}: ${this.url_status[property]}`);
@@ -39,7 +39,7 @@ class scrapper {
                     }
                     else
                     {
-                        status += `${property} : ${this.url_status[property]}` + "<br />\n"
+                        status += `${property} : <span style="color:green"> ${this.url_status[property]}` + "</span><br />\n"
                     }
                 }
 
@@ -70,8 +70,7 @@ class scrapper {
                     // console.log(this.all_url_from_where)                    
                     if(data.status == 200)
                     this.search_link(url_destination, data.data_url_destination, (data) =>{
-                        cb({
-                        });
+                        cb({});
                     });
 
                     cb({});
